@@ -11,6 +11,7 @@ module TeachersImporter
         else
           attribute_hash = Hash[field_names.zip(data)]
           teacher = Teacher.create!(attribute_hash)
+          puts teacher
         end
       end
     end

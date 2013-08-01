@@ -10,6 +10,6 @@ class CreateTeachers < ActiveRecord::Migration
       t.string :phone
     end
 
-    add_column :students, :integer, :teacher_id
+    add_column :students, :teacher_id, :integer
   end
 end
