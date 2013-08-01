@@ -8,6 +8,9 @@ class Student < ActiveRecord::Base
   validates :phone, format: { with: /\(?\d{3}\)?.?\d{3}.?\d{4}\s?x?(\d{1,4})?/,
       message: "only allows valid phone numbers"}
 
+  has_many :sections
+  has_many :teachers, through: :sections
+
   def name
     first_name + " " + last_name
   end

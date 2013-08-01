@@ -11,9 +11,10 @@ module StudentsImporter
         else
           attribute_hash = Hash[field_names.zip(data)]
           student = Student.create!(attribute_hash)
-          puts student
+          print "."
         end
       end
     end
+    puts
   end
 end

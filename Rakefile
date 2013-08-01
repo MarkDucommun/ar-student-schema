@@ -3,6 +3,8 @@ require 'rspec/core/rake_task'
 require_relative 'db/config'
 require_relative 'lib/students_importer'
 require_relative 'lib/teachers_importer'
+require_relative 'lib/create_relations'
+require_relative 'lib/print_relations'
 
 desc "create the database"
 task "db:create" do
@@ -26,7 +28,14 @@ end
 desc "populate the test database with sample data"
 task "db:populate" do
   StudentsImporter.import
-  # TeachersImporter.import
+  TeachersImporter.import
+  CreateRelations.create
+  PrintRelations.print
+end
+
+desc "prints relations from students -> teachers then reverse"
+task "db:print_relations" do
+  PrintRelations.print
 end
 
 desc 'Retrieves the current schema version number'
