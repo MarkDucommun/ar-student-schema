@@ -5,7 +5,7 @@ class Student < ActiveRecord::Base
   validates :email, uniqueness: true, format: { with: /\w\S+[@]\w+[.]\w{2,}/,
       message: "only allows valid emails" }
   validates_inclusion_of :age, :in => (4..200).to_a
-  validates :phone, format: { with: /\(?\d{3}\)?.?\d{3}.+\d{4}\s?x?(\d{4})?/,
+  validates :phone, format: { with: /\(?\d{3}\)?.?\d{3}.?\d{4}\s?x?(\d{1,4})?/,
       message: "only allows valid phone numbers"}
 
   attr_accessor :first_name, :last_name, :birthday, :gender,
