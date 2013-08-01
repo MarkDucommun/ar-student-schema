@@ -9,9 +9,7 @@ class CreateTeachers < ActiveRecord::Migration
       t.string :email
       t.string :phone
     end
-  end
 
-  def up
     add_column :students, :integer, :teacher_id
   end
 end

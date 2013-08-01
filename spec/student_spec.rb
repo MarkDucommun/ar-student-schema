@@ -42,7 +42,8 @@ describe Student, "validations" do
   end
 
   before(:each) do
-    @student = Student.create(
+    @student = Student.new
+    @student.assign_attributes(
       :first_name => "Kreay",
       :last_name => "Shawn",
       :birthday => Date.new(1989,9,24),
@@ -58,9 +59,7 @@ describe Student, "validations" do
 
   it "shouldn't accept invalid emails" do
     ["XYZ!bitnet", "@.", "a@b.c"].each do |address|
-      p @student
       @student.assign_attributes(:email => address)
-      p @student
       @student.should_not be_valid
     end
   end
@@ -78,22 +77,14 @@ describe Student, "validations" do
   end
 
   it "shouldn't allow two students with the same email" do
-    p @student = Student.assign_attributes(
-      :first_name => "Kreay",
-      :last_name => "Shawn",
-      :birthday => Date.new(1989,9,24),
-      :gender => 'female',
-      :email => 'kreayshawn@oaklandhiphop.net',
-      :phone => '(510) 555-1212 x4567'
-    )
-    p @student
-    p another_student = Student.create!(
+    another_student = Student.create!(
       :birthday => @student.birthday,
       :email => @student.email,
       :phone => @student.phone
     )
-    another_student.should_not be_valid
+    @student.should_not be_valid
   end
+
 end
 
 describe Student, "advanced validations" do
