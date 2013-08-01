@@ -2,8 +2,7 @@ require_relative '../app/models/teacher'
 require_relative '../app/models/student'
 require_relative '../app/models/section'
 
-class PrintRelations
-  
+module PrintRelations
   def self.print
     Teacher.order(:first_name).all.each do |teacher|
       puts "Students of #{teacher}"

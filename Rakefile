@@ -6,6 +6,16 @@ require_relative 'lib/teachers_importer'
 require_relative 'lib/create_relations'
 require_relative 'lib/print_relations'
 
+desc "open a console"
+task "db:console" do
+  exec "irb -r ./app/app.rb"
+end
+
+desc "drop, create, migrate, populate"
+task "db:f_it" => ["db:drop","db:create","db:migrate","db:populate"] do
+  puts "done'd it"
+end
+
 desc "create the database"
 task "db:create" do
   touch 'db/ar-students.sqlite3'
