@@ -1,6 +1,6 @@
 require_relative '../../db/config'
 
 class Section < ActiveRecord::Base
-  belongs_to :teachers
-  belongs_to :students
+  belongs_to :teacher
+  belongs_to :student
 end
